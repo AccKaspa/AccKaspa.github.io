@@ -16,16 +16,42 @@ body {
 }
 
 header {
-    background-color: #111;
-    color: #0ff;
     width: 100%;
     padding: 1rem 0;
     text-align: center;
-    border-bottom: 2px solid #0ff;
+    position: relative;
+}
+
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.side-banner {
+    width: 15%;
+    height: auto;
+}
+
+.main-banner {
+    width: 70%;
+    height: auto;
+}
+
+.header-text {
+    margin-top: 1rem;
 }
 
 header h1 {
     font-size: 2rem;
+    color: #0ff;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1rem;
+    color: #0ff;
 }
 
 header nav {
@@ -71,35 +97,3 @@ main {
 .gif-grid {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 2;
-    pointer-events: none; /* Ensures that clicks pass through the GIFs to the images below */
-}
-
-.grid-item {
-    background-color: transparent;
-    position: relative;
-}
-
-.grid-item img,
-.grid-item video {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
-    display: block;
-}
-
-.grid-item img:hover,
-.grid-item video:hover {
-    transform: scale(1.05);
-}
-
-@media (max-width: 600px) {
-    .image-grid,
-    .gif-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    }
-}
-
-@import url('https://fonts.googleapis.com/css2
