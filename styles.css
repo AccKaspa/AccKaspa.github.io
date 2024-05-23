@@ -42,6 +42,12 @@ header {
     margin-top: 1rem;
 }
 
+.header-image img {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+}
+
 .header-text {
     margin-top: 1rem;
 }
@@ -106,6 +112,12 @@ main {
     .image-grid,
     .gif-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-image img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
     }
 }
 
