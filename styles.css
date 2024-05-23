@@ -16,9 +16,7 @@ body {
 }
 
 header {
-    font-family: 'DejaVu Sans', sans-serif;
     width: 100%;
-    padding: 1rem 0;
     text-align: center;
     position: relative;
 }
@@ -70,6 +68,7 @@ main {
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     justify-items: center;
+    position: relative;
 }
 
 .image-grid {
@@ -104,3 +103,10 @@ main {
 }
 
 @media (max-width: 600px) {
+    .image-grid,
+    .gif-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=DejaVu+Sans&display=swap');
