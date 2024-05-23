@@ -16,6 +16,7 @@ body {
 }
 
 header {
+    font-family: 'DejaVu Sans', sans-serif;
     width: 100%;
     padding: 1rem 0;
     text-align: center;
