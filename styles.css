@@ -108,6 +108,12 @@ main {
     transform: scale(1.05);
 }
 
+.audio-control {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
 @media (max-width: 600px) {
     .image-grid,
     .gif-grid {
