@@ -77,10 +77,18 @@
             </section>
         </div>
     </main>
-    <audio autoplay loop>
+    <audio id="background-audio" loop>
         <source src="Peshay Piano Tune.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
-    <script src="script.js"></script>
+    <div class="audio-control">
+        <button onclick="playAudio()">Play Music</button>
+    </div>
+    <script>
+        function playAudio() {
+            var audio = document.getElementById("background-audio");
+            audio.play();
+        }
+    </script>
 </body>
 </html>
