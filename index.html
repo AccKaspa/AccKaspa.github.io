@@ -5,13 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro Image Grid with GIF Overlay</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .grid-item {
+            width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="banner-container">
-            <img src="logo.jpeg" alt="Left Banner" class="side-banner left">
-            <img src="new_banner.jpeg" alt="Main Banner" class="main-banner">
-            <img src="logo.jpeg" alt="Right Banner" class="side-banner right">
+            <img src="land.jpeg" alt="Left Banner" class="side-banner left">
+            <img src="banner.jpeg" alt="Main Banner" class="main-banner">
+            <img src="land.jpeg" alt="Right Banner" class="side-banner right">
         </div>
         <div class="header-image">
             <img src="acccoin.jpeg" alt="ACC Coin">
@@ -22,7 +43,7 @@
     </header>
     <main>
         <div class="layer-container">
-            <section class="image-video-grid">
+            <section class="grid-container image-video-grid">
                 <!-- INSERT IMAGES AND VIDEOS HERE -->
 <div class='grid-item'><video controls><source src='upload_folder/8hlX9dL7C4QP9ub4.mp4' type='video/mp4'>Your browser does not support the video tag.</video></div>
 <div class='grid-item'><video controls><source src='upload_folder/Ff7pGJd30xl1_ko-.mp4' type='video/mp4'>Your browser does not support the video tag.</video></div>
@@ -78,7 +99,7 @@
 <div class='grid-item'><img src='upload_folder/new_banner.jpeg' alt='new_banner.jpeg'></div>
 
             </section>
-            <section class="gif-grid">
+            <section class="grid-container gif-grid">
 <div class='grid-item'><img src='upload_folder/unnamed (1).gif' alt='unnamed (1).gif'></div>
 <div class='grid-item'><img src='upload_folder/unnamed (10).gif' alt='unnamed (10).gif'></div>
 <div class='grid-item'><img src='upload_folder/unnamed (11).gif' alt='unnamed (11).gif'></div>
