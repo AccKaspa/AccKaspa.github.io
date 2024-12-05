@@ -539,7 +539,7 @@ function loadRandomMedia() {
     gifOverlayContainer.innerHTML = '';
 
     // Load random background images
-    const randomBackgroundImages = backgroundImagePool.sort(() => 0.5 - Math.random()).slice(0, 4);
+    const randomBackgroundImages = pools.images.sort(() => 0.5 - Math.random()).slice(0, 4);
     randomBackgroundImages.forEach(imagePath => {
         const img = new Image();
         img.src = imagePath;
@@ -557,7 +557,7 @@ function loadRandomMedia() {
     });
 
     // Load unique GIFs and spread them across the container
-    const randomGifs = gifPool.sort(() => 0.5 - Math.random()).slice(0, 10); // Limit to 10 unique GIFs
+    const randomGifs = pools.gifs.sort(() => 0.5 - Math.random()).slice(0, 10); // Limit to 10 unique GIFs
     randomGifs.forEach(gifPath => {
         const gifImg = new Image();
         gifImg.src = gifPath;
