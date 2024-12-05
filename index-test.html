@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,7 +158,8 @@
     </div>
 </main>
 <script>
-            const imagePool = ["AccKaspa.github.io/img/0001.webp",
+const pools = {
+            images: ["AccKaspa.github.io/img/0001.webp",
                   			"AccKaspa.github.io/img/0002.webp",
                   			"AccKaspa.github.io/img/0003.webp",
                   			"AccKaspa.github.io/img/0004.webp",
@@ -365,7 +365,7 @@
                   			"AccKaspa.github.io/img/0204.webp",
                   			"AccKaspa.github.io/img/0205.webp"];
 
-            const gifPool = [ "AccKaspa.github.io/gif/0001.gif",
+            gifs: [ "AccKaspa.github.io/gif/0001.gif",
                   			"AccKaspa.github.io/gif/0002.gif",
                   			"AccKaspa.github.io/gif/0003.gif",
                   			"AccKaspa.github.io/gif/0004.gif",
@@ -528,59 +528,59 @@
                   			"AccKaspa.github.io/gif/0161.gif",
                   			"AccKaspa.github.io/gif/0162.gif",
                   			"AccKaspa.github.io/gif/0163.gif",
-                  			"AccKaspa.github.io/gif/0164.gif"];
+                  			"AccKaspa.github.io/gif/0164.gif"]
+              };                       
+function loadRandomMedia() {
+    const backgroundImagesContainer = document.getElementById('backgroundImages');
+    const gifOverlayContainer = document.getElementById('gifOverlay');
 
-    function loadRandomImagesAndgif() {
-        const backgroundImages = document.getElementById('backgroundImages');
-        const gifOverlay = document.getElementById('gifOverlay');
+    // Clear previous content
+    backgroundImagesContainer.innerHTML = '';
+    gifOverlayContainer.innerHTML = '';
 
-        // Clear previous content
-        backgroundImages.innerHTML = '';
-        gifOverlay.innerHTML = '';
+    // Load random background images
+    const randomBackgroundImages = backgroundImagePool.sort(() => 0.5 - Math.random()).slice(0, 4);
+    randomBackgroundImages.forEach(imagePath => {
+        const img = new Image();
+        img.src = imagePath;
+        img.alt = 'Random Background Image';
+        img.style.display = 'block';
+        backgroundImagesContainer.appendChild(img);
+    });
 
-        // Load background images
-        const randomImages = imagePool.sort(() => 0.5 - Math.random()).slice(0, 4);
-        randomImages.forEach(imagePath => {
-            const img = new Image();
-            img.src = imagePath;
-            img.alt = 'Random Background Image';
-            img.style.display = 'block';
-            backgroundImages.appendChild(img);
-        });
+    // Calculate total height of background images
+    const container = document.querySelector('.canvas-container');
+    const imageElements = backgroundImagesContainer.querySelectorAll('img');
+    let totalHeight = 0;
+    imageElements.forEach(image => {
+        totalHeight += image.offsetHeight || container.offsetWidth * 0.5625; // Assume 16:9 ratio for default height
+    });
 
-        // Calculate total height of background images
-        const container = document.querySelector('.canvas-container');
-        const imageElements = backgroundImages.querySelectorAll('img');
-        let totalHeight = 0;
-        imageElements.forEach(image => {
-            totalHeight += image.offsetHeight || container.offsetWidth * 0.5625; // Assume 16:9 ratio for default height
-        });
+    // Load unique GIFs and spread them across the container
+    const randomGifs = gifPool.sort(() => 0.5 - Math.random()).slice(0, 10); // Limit to 10 unique GIFs
+    randomGifs.forEach(gifPath => {
+        const gifImg = new Image();
+        gifImg.src = gifPath;
+        gifImg.alt = 'Random GIF';
+        gifImg.className = 'gif';
 
-        // Load unique gif and spread them across the container
-        const uniquegif = gifPool.sort(() => 0.5 - Math.random()).slice(0, 10); // Limit to 10 unique gif
-        uniquegif.forEach(gifPath => {
-            const gifImg = new Image();
-            gifImg.src = gifPath;
-            gifImg.alt = 'Random GIF';
-            gifImg.className = 'gif';
+        // Position GIF randomly within the total container area
+        const containerWidth = container.offsetWidth;
+        const randomX = Math.random() * (containerWidth - 10 * window.innerWidth / 100);
+        const randomY = Math.random() * totalHeight;
 
-            // Position GIF randomly within the total container area
-            const containerWidth = container.offsetWidth;
-            const randomX = Math.random() * (containerWidth - 10 * window.innerWidth / 100);
-            const randomY = Math.random() * totalHeight;
+        gifImg.style.left = `${randomX}px`;
+        gifImg.style.top = `${randomY}px`;
 
-            gifImg.style.left = `${randomX}px`;
-            gifImg.style.top = `${randomY}px`;
+        gifOverlayContainer.appendChild(gifImg);
+    });
+}
 
-            gifOverlay.appendChild(gifImg);
-        });
-    }
+// Initialize on load
+window.onload = loadRandomMedia;
 
-    // Initialize on load
-    window.onload = loadRandomImagesAndgif;
-
-    // Reload on resize
-    window.onresize = loadRandomImagesAndgif;
+// Reload on resize
+window.onresize = loadRandomMedia;
 </script>
 </body>
 </html>
