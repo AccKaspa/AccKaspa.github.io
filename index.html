@@ -35,6 +35,13 @@
             display: block;
             margin-bottom: 10px;
         }
+        .gif-overlay img {
+            width: 350px;
+            height: 350px;
+            object-fit: contain;
+            position: absolute;
+            z-index: 15;
+        }
         header {
             width: 100%;
             text-align: center;
@@ -115,7 +122,7 @@
             <img src="AccKaspa.github.io/site-assets/tg.png" alt="Telegram">
         </a>
     </div>
-    
+
         <div class="header-text">
             <a href="mission-statement.html" style="color: white; font-size: 36px; text-decoration: underline;">THIRST FOR ANNIHILATION</a>
         </div>
@@ -135,229 +142,240 @@
 </header>
 <main>
     <div class="canvas-container" id="canvasContainer">
+        <div id="backgroundImages"></div>
         <div class="gif-overlay" id="gifOverlay"></div>
     </div>
 </main>
 <script>
-            const imagePool = ["AccKaspa.github.io/img/0001.webp",
-                               "AccKaspa.github.io/img/0002.webp",
-                               "AccKaspa.github.io/img/0003.webp",
-                               "AccKaspa.github.io/img/0004.webp",
-                               "AccKaspa.github.io/img/0005.webp",
-                               "AccKaspa.github.io/img/0006.webp",
-                               "AccKaspa.github.io/img/0007.webp",
-                               "AccKaspa.github.io/img/0008.webp",
-                               "AccKaspa.github.io/img/0009.webp",
-                               "AccKaspa.github.io/img/0010.webp",
-                               "AccKaspa.github.io/img/0011.webp",
-                               "AccKaspa.github.io/img/0012.webp",
-                               "AccKaspa.github.io/img/0013.webp",
-                               "AccKaspa.github.io/img/0014.webp",
-                               "AccKaspa.github.io/img/0015.webp",
-                               "AccKaspa.github.io/img/0016.webp",
-                               "AccKaspa.github.io/img/0017.webp",
-                               "AccKaspa.github.io/img/0018.webp",
-                               "AccKaspa.github.io/img/0019.webp",
-                               "AccKaspa.github.io/img/0020.webp",
-                               "AccKaspa.github.io/img/0021.webp",
-                               "AccKaspa.github.io/img/0022.webp",
-                               "AccKaspa.github.io/img/0023.webp",
-                               "AccKaspa.github.io/img/0024.webp",
-                               "AccKaspa.github.io/img/0025.webp",
-                               "AccKaspa.github.io/img/0026.webp",
-                               "AccKaspa.github.io/img/0027.webp",
-                               "AccKaspa.github.io/img/0028.webp",
-                               "AccKaspa.github.io/img/0029.webp",
-                               "AccKaspa.github.io/img/0030.webp",
-                               "AccKaspa.github.io/img/0031.webp",
-                               "AccKaspa.github.io/img/0032.webp",
-                               "AccKaspa.github.io/img/0033.webp",
-                               "AccKaspa.github.io/img/0034.webp",
-                               "AccKaspa.github.io/img/0035.webp",
-                               "AccKaspa.github.io/img/0036.webp",
-                               "AccKaspa.github.io/img/0037.webp",
-                               "AccKaspa.github.io/img/0038.webp",
-                               "AccKaspa.github.io/img/0039.webp",
-                               "AccKaspa.github.io/img/0040.webp",
-                               "AccKaspa.github.io/img/0041.webp",
-                               "AccKaspa.github.io/img/0042.webp",
-                               "AccKaspa.github.io/img/0043.webp",
-                               "AccKaspa.github.io/img/0044.webp",
-                               "AccKaspa.github.io/img/0045.webp",
-                               "AccKaspa.github.io/img/0046.webp",
-                               "AccKaspa.github.io/img/0047.webp",
-                               "AccKaspa.github.io/img/0048.webp",
-                               "AccKaspa.github.io/img/0049.webp",
-                               "AccKaspa.github.io/img/0050.webp",
-                               "AccKaspa.github.io/img/0051.webp",
-                               "AccKaspa.github.io/img/0052.webp",
-                               "AccKaspa.github.io/img/0053.webp",
-                               "AccKaspa.github.io/img/0054.webp",
-                               "AccKaspa.github.io/img/0055.webp",
-                               "AccKaspa.github.io/img/0056.webp",
-                               "AccKaspa.github.io/img/0057.webp",
-                               "AccKaspa.github.io/img/0058.webp",
-                               "AccKaspa.github.io/img/0059.webp",
-                               "AccKaspa.github.io/img/0060.webp",
-                               "AccKaspa.github.io/img/0061.webp",
-                               "AccKaspa.github.io/img/0062.webp",
-                               "AccKaspa.github.io/img/0063.webp",
-                               "AccKaspa.github.io/img/0064.webp",
-                               "AccKaspa.github.io/img/0065.webp",
-                               "AccKaspa.github.io/img/0066.webp",
-                               "AccKaspa.github.io/img/0067.webp",
-                               "AccKaspa.github.io/img/0068.webp",
-                               "AccKaspa.github.io/img/0069.webp",
-                               "AccKaspa.github.io/img/0070.webp",
-                               "AccKaspa.github.io/img/0071.webp",
-                               "AccKaspa.github.io/img/0072.webp",
-                               "AccKaspa.github.io/img/0073.webp",
-                               "AccKaspa.github.io/img/0074.webp",
-                               "AccKaspa.github.io/img/0075.webp",
-                               "AccKaspa.github.io/img/0076.webp",
-                               "AccKaspa.github.io/img/0077.webp",
-                               "AccKaspa.github.io/img/0078.webp",
-                               "AccKaspa.github.io/img/0079.webp",
-                               "AccKaspa.github.io/img/0080.webp",
-                               "AccKaspa.github.io/img/0081.webp",
-                               "AccKaspa.github.io/img/0082.webp",
-                               "AccKaspa.github.io/img/0083.webp",
-                               "AccKaspa.github.io/img/0084.webp",
-                               "AccKaspa.github.io/img/0085.webp",
-                               "AccKaspa.github.io/img/0086.webp",
-                               "AccKaspa.github.io/img/0087.webp",
-                               "AccKaspa.github.io/img/0088.webp",
-                               "AccKaspa.github.io/img/0089.webp",
-                               "AccKaspa.github.io/img/0090.webp",
-                               "AccKaspa.github.io/img/0091.webp",
-                               "AccKaspa.github.io/img/0092.webp",
-                               "AccKaspa.github.io/img/0093.webp",
-                               "AccKaspa.github.io/img/0094.webp",
-                               "AccKaspa.github.io/img/0095.webp",
-                               "AccKaspa.github.io/img/0096.webp",
-                               "AccKaspa.github.io/img/0097.webp",
-                               "AccKaspa.github.io/img/0098.webp",
-                               "AccKaspa.github.io/img/0099.webp",
-                               "AccKaspa.github.io/img/0100.webp",
-                               "AccKaspa.github.io/img/0101.webp",
-                               "AccKaspa.github.io/img/0102.webp",
-                               "AccKaspa.github.io/img/0103.webp",
-                               "AccKaspa.github.io/img/0104.webp",
-                               "AccKaspa.github.io/img/0105.webp",
-                               "AccKaspa.github.io/img/0106.webp",
-                               "AccKaspa.github.io/img/0107.webp",
-                               "AccKaspa.github.io/img/0108.webp",
-                               "AccKaspa.github.io/img/0109.webp",
-                               "AccKaspa.github.io/img/0110.webp",
-                               "AccKaspa.github.io/img/0111.webp",
-                               "AccKaspa.github.io/img/0112.webp",
-                               "AccKaspa.github.io/img/0113.webp",
-                               "AccKaspa.github.io/img/0114.webp",
-                               "AccKaspa.github.io/img/0115.webp",
-                               "AccKaspa.github.io/img/0116.webp",
-                               "AccKaspa.github.io/img/0117.webp",
-                               "AccKaspa.github.io/img/0118.webp",
-                               "AccKaspa.github.io/img/0119.webp",
-                               "AccKaspa.github.io/img/0120.webp",
-                               "AccKaspa.github.io/img/0121.webp",
-                               "AccKaspa.github.io/img/0122.webp",
-                               "AccKaspa.github.io/img/0123.webp",
-                               "AccKaspa.github.io/img/0124.webp",
-                               "AccKaspa.github.io/img/0125.webp",
-                               "AccKaspa.github.io/img/0126.webp",
-                               "AccKaspa.github.io/img/0127.webp",
-                               "AccKaspa.github.io/img/0128.webp",
-                               "AccKaspa.github.io/img/0129.webp",
-                               "AccKaspa.github.io/img/0130.webp",
-                               "AccKaspa.github.io/img/0131.webp",
-                               "AccKaspa.github.io/img/0132.webp",
-                               "AccKaspa.github.io/img/0133.webp",
-                               "AccKaspa.github.io/img/0134.webp",
-                               "AccKaspa.github.io/img/0135.webp",
-                               "AccKaspa.github.io/img/0136.webp",
-                               "AccKaspa.github.io/img/0137.webp",
-                               "AccKaspa.github.io/img/0138.webp",
-                               "AccKaspa.github.io/img/0139.webp",
-                               "AccKaspa.github.io/img/0140.webp",
-                               "AccKaspa.github.io/img/0141.webp",
-                               "AccKaspa.github.io/img/0142.webp",
-                               "AccKaspa.github.io/img/0143.webp",
-                               "AccKaspa.github.io/img/0144.webp",
-                               "AccKaspa.github.io/img/0145.webp",
-                               "AccKaspa.github.io/img/0146.webp",
-                               "AccKaspa.github.io/img/0147.webp",
-                               "AccKaspa.github.io/img/0148.webp",
-                               "AccKaspa.github.io/img/0149.webp",
-                               "AccKaspa.github.io/img/0150.webp",
-                               "AccKaspa.github.io/img/0151.webp",
-                               "AccKaspa.github.io/img/0152.webp",
-                               "AccKaspa.github.io/img/0153.webp",
-                               "AccKaspa.github.io/img/0154.webp",
-                               "AccKaspa.github.io/img/0155.webp",
-                               "AccKaspa.github.io/img/0156.webp",
-                               "AccKaspa.github.io/img/0157.webp",
-                               "AccKaspa.github.io/img/0158.webp",
-                               "AccKaspa.github.io/img/0159.webp",
-                               "AccKaspa.github.io/img/0160.webp",
-                               "AccKaspa.github.io/img/0161.webp",
-                               "AccKaspa.github.io/img/0162.webp",
-                               "AccKaspa.github.io/img/0163.webp",
-                               "AccKaspa.github.io/img/0164.webp",
-                               "AccKaspa.github.io/img/0165.webp",
-                               "AccKaspa.github.io/img/0166.webp",
-                               "AccKaspa.github.io/img/0167.webp",
-                               "AccKaspa.github.io/img/0168.webp",
-                               "AccKaspa.github.io/img/0169.webp",
-                               "AccKaspa.github.io/img/0170.webp",
-                               "AccKaspa.github.io/img/0171.webp",
-                               "AccKaspa.github.io/img/0172.webp",
-                               "AccKaspa.github.io/img/0173.webp",
-                               "AccKaspa.github.io/img/0174.webp",
-                               "AccKaspa.github.io/img/0175.webp",
-                               "AccKaspa.github.io/img/0176.webp",
-                               "AccKaspa.github.io/img/0177.webp",
-                               "AccKaspa.github.io/img/0178.webp",
-                               "AccKaspa.github.io/img/0179.webp",
-                               "AccKaspa.github.io/img/0180.webp",
-                               "AccKaspa.github.io/img/0181.webp",
-                               "AccKaspa.github.io/img/0182.webp",
-                               "AccKaspa.github.io/img/0183.webp",
-                               "AccKaspa.github.io/img/0184.webp",
-                               "AccKaspa.github.io/img/0185.webp",
-                               "AccKaspa.github.io/img/0186.webp",
-                               "AccKaspa.github.io/img/0187.webp",
-                               "AccKaspa.github.io/img/0188.webp",
-                               "AccKaspa.github.io/img/0189.webp",
-                               "AccKaspa.github.io/img/0190.webp",
-                               "AccKaspa.github.io/img/0191.webp",
-                               "AccKaspa.github.io/img/0192.webp",
-                               "AccKaspa.github.io/img/0193.webp",
-                               "AccKaspa.github.io/img/0194.webp",
-                               "AccKaspa.github.io/img/0195.webp",
-                               "AccKaspa.github.io/img/0196.webp",
-                               "AccKaspa.github.io/img/0197.webp",
-                               "AccKaspa.github.io/img/0198.webp",
-                               "AccKaspa.github.io/img/0199.webp",
-                               "AccKaspa.github.io/img/0200.webp",
-                               "AccKaspa.github.io/img/0201.webp",
-                               "AccKaspa.github.io/img/0202.webp",
-                               "AccKaspa.github.io/img/0203.webp",
-                               "AccKaspa.github.io/img/0204.webp",
-                               "AccKaspa.github.io/img/0205.webp"];
-    function loadRandomImagesAndGifs() {
-        const canvasContainer = document.getElementById('canvasContainer');
-        const gifOverlay = document.getElementById('gifOverlay');
-        canvasContainer.innerHTML = '';
-        gifOverlay.innerHTML = '';
-        const randomImages = imagePool.sort(() => 0.5 - Math.random()).slice(0, 25);
-        randomImages.forEach(imagePath => {
-            const img = new Image();
-            img.src = imagePath;
-            img.alt = 'Random Image';
-            canvasContainer.appendChild(img);
-        });
-    }
-    window.onload = loadRandomImagesAndGifs;
+
+const imagePool = [
+    "https://AccKaspa.github.io/img/0001.webp", "https://AccKaspa.github.io/img/0002.webp",
+    "https://AccKaspa.github.io/img/0003.webp", "https://AccKaspa.github.io/img/0004.webp",
+    "https://AccKaspa.github.io/img/0005.webp", "https://AccKaspa.github.io/img/0006.webp",
+    "https://AccKaspa.github.io/img/0007.webp", "https://AccKaspa.github.io/img/0008.webp",
+    "https://AccKaspa.github.io/img/0009.webp", "https://AccKaspa.github.io/img/0010.webp",
+    "https://AccKaspa.github.io/img/0011.webp", "https://AccKaspa.github.io/img/0012.webp",
+    "https://AccKaspa.github.io/img/0013.webp", "https://AccKaspa.github.io/img/0014.webp",
+    "https://AccKaspa.github.io/img/0015.webp", "https://AccKaspa.github.io/img/0016.webp",
+    "https://AccKaspa.github.io/img/0017.webp", "https://AccKaspa.github.io/img/0018.webp",
+    "https://AccKaspa.github.io/img/0019.webp", "https://AccKaspa.github.io/img/0020.webp",
+    "https://AccKaspa.github.io/img/0021.webp", "https://AccKaspa.github.io/img/0022.webp",
+    "https://AccKaspa.github.io/img/0023.webp", "https://AccKaspa.github.io/img/0024.webp",
+    "https://AccKaspa.github.io/img/0025.webp", "https://AccKaspa.github.io/img/0026.webp",
+    "https://AccKaspa.github.io/img/0027.webp", "https://AccKaspa.github.io/img/0028.webp",
+    "https://AccKaspa.github.io/img/0029.webp", "https://AccKaspa.github.io/img/0030.webp",
+    "https://AccKaspa.github.io/img/0031.webp", "https://AccKaspa.github.io/img/0032.webp",
+    "https://AccKaspa.github.io/img/0033.webp", "https://AccKaspa.github.io/img/0034.webp",
+    "https://AccKaspa.github.io/img/0035.webp", "https://AccKaspa.github.io/img/0037.webp",
+    "https://AccKaspa.github.io/img/0038.webp", "https://AccKaspa.github.io/img/0039.webp",
+    "https://AccKaspa.github.io/img/0040.webp", "https://AccKaspa.github.io/img/0041.webp",
+    "https://AccKaspa.github.io/img/0042.webp", "https://AccKaspa.github.io/img/0043.webp",
+    "https://AccKaspa.github.io/img/0044.webp", "https://AccKaspa.github.io/img/0045.webp",
+    "https://AccKaspa.github.io/img/0046.webp", "https://AccKaspa.github.io/img/0047.webp",
+    "https://AccKaspa.github.io/img/0048.webp", "https://AccKaspa.github.io/img/0049.webp",
+    "https://AccKaspa.github.io/img/0050.webp", "https://AccKaspa.github.io/img/0051.webp",
+    "https://AccKaspa.github.io/img/0052.webp", "https://AccKaspa.github.io/img/0054.webp",
+    "https://AccKaspa.github.io/img/0055.webp", "https://AccKaspa.github.io/img/0056.webp",
+    "https://AccKaspa.github.io/img/0057.webp", "https://AccKaspa.github.io/img/0058.webp",
+    "https://AccKaspa.github.io/img/0059.webp", "https://AccKaspa.github.io/img/0060.webp",
+    "https://AccKaspa.github.io/img/0061.webp", "https://AccKaspa.github.io/img/0062.webp",
+    "https://AccKaspa.github.io/img/0063.webp", "https://AccKaspa.github.io/img/0064.webp",
+    "https://AccKaspa.github.io/img/0065.webp", "https://AccKaspa.github.io/img/0066.webp",
+    "https://AccKaspa.github.io/img/0067.webp", "https://AccKaspa.github.io/img/0068.webp",
+    "https://AccKaspa.github.io/img/0069.webp", "https://AccKaspa.github.io/img/0071.webp",
+    "https://AccKaspa.github.io/img/0072.webp", "https://AccKaspa.github.io/img/0073.webp",
+    "https://AccKaspa.github.io/img/0074.webp", "https://AccKaspa.github.io/img/0075.webp",
+    "https://AccKaspa.github.io/img/0076.webp", "https://AccKaspa.github.io/img/0077.webp",
+    "https://AccKaspa.github.io/img/0078.webp", "https://AccKaspa.github.io/img/0079.webp",
+    "https://AccKaspa.github.io/img/0080.webp", "https://AccKaspa.github.io/img/0081.webp",
+    "https://AccKaspa.github.io/img/0082.webp", "https://AccKaspa.github.io/img/0083.webp",
+    "https://AccKaspa.github.io/img/0084.webp", "https://AccKaspa.github.io/img/0085.webp",
+    "https://AccKaspa.github.io/img/0086.webp", "https://AccKaspa.github.io/img/0087.webp",
+    "https://AccKaspa.github.io/img/0088.webp", "https://AccKaspa.github.io/img/0089.webp",
+    "https://AccKaspa.github.io/img/0090.webp", "https://AccKaspa.github.io/img/0091.webp",
+    "https://AccKaspa.github.io/img/0092.webp", "https://AccKaspa.github.io/img/0093.webp",
+    "https://AccKaspa.github.io/img/0094.webp", "https://AccKaspa.github.io/img/0095.webp",
+    "https://AccKaspa.github.io/img/0096.webp", "https://AccKaspa.github.io/img/0097.webp",
+    "https://AccKaspa.github.io/img/0098.webp", "https://AccKaspa.github.io/img/0099.webp",
+    "https://AccKaspa.github.io/img/0100.webp", "https://AccKaspa.github.io/img/0101.webp",
+    "https://AccKaspa.github.io/img/0102.webp", "https://AccKaspa.github.io/img/0103.webp",
+    "https://AccKaspa.github.io/img/0104.webp", "https://AccKaspa.github.io/img/0105.webp",
+    "https://AccKaspa.github.io/img/0106.webp", "https://AccKaspa.github.io/img/0107.webp",
+    "https://AccKaspa.github.io/img/0108.webp", "https://AccKaspa.github.io/img/0109.webp",
+    "https://AccKaspa.github.io/img/0110.webp", "https://AccKaspa.github.io/img/0111.webp",
+    "https://AccKaspa.github.io/img/0112.webp", "https://AccKaspa.github.io/img/0113.webp",
+    "https://AccKaspa.github.io/img/0114.webp", "https://AccKaspa.github.io/img/0115.webp",
+    "https://AccKaspa.github.io/img/0116.webp", "https://AccKaspa.github.io/img/0117.webp",
+    "https://AccKaspa.github.io/img/0118.webp", "https://AccKaspa.github.io/img/0119.webp",
+    "https://AccKaspa.github.io/img/0120.webp", "https://AccKaspa.github.io/img/0121.webp",
+    "https://AccKaspa.github.io/img/0122.webp", "https://AccKaspa.github.io/img/0123.webp",
+    "https://AccKaspa.github.io/img/0124.webp", "https://AccKaspa.github.io/img/0125.webp",
+    "https://AccKaspa.github.io/img/0126.webp", "https://AccKaspa.github.io/img/0127.webp",
+    "https://AccKaspa.github.io/img/0129.webp", "https://AccKaspa.github.io/img/0130.webp",
+    "https://AccKaspa.github.io/img/0131.webp", "https://AccKaspa.github.io/img/0132.webp",
+    "https://AccKaspa.github.io/img/0133.webp", "https://AccKaspa.github.io/img/0134.webp",
+    "https://AccKaspa.github.io/img/0135.webp", "https://AccKaspa.github.io/img/0137.webp",
+    "https://AccKaspa.github.io/img/0138.webp", "https://AccKaspa.github.io/img/0139.webp",
+    "https://AccKaspa.github.io/img/0140.webp", "https://AccKaspa.github.io/img/0141.webp",
+    "https://AccKaspa.github.io/img/0142.webp", "https://AccKaspa.github.io/img/0143.webp",
+    "https://AccKaspa.github.io/img/0144.webp", "https://AccKaspa.github.io/img/0145.webp",
+    "https://AccKaspa.github.io/img/0146.webp", "https://AccKaspa.github.io/img/0147.webp",
+    "https://AccKaspa.github.io/img/0148.webp", "https://AccKaspa.github.io/img/0149.webp",
+    "https://AccKaspa.github.io/img/0150.webp", "https://AccKaspa.github.io/img/0152.webp",
+    "https://AccKaspa.github.io/img/0153.webp", "https://AccKaspa.github.io/img/0154.webp",
+    "https://AccKaspa.github.io/img/0155.webp", "https://AccKaspa.github.io/img/0156.webp",
+    "https://AccKaspa.github.io/img/0157.webp", "https://AccKaspa.github.io/img/0158.webp",
+    "https://AccKaspa.github.io/img/0159.webp", "https://AccKaspa.github.io/img/0160.webp",
+    "https://AccKaspa.github.io/img/0161.webp", "https://AccKaspa.github.io/img/0162.webp",
+    "https://AccKaspa.github.io/img/0163.webp", "https://AccKaspa.github.io/img/0164.webp",
+    "https://AccKaspa.github.io/img/0165.webp", "https://AccKaspa.github.io/img/0167.webp",
+    "https://AccKaspa.github.io/img/0168.webp", "https://AccKaspa.github.io/img/0169.webp",
+    "https://AccKaspa.github.io/img/0171.webp", "https://AccKaspa.github.io/img/0172.webp",
+    "https://AccKaspa.github.io/img/0173.webp", "https://AccKaspa.github.io/img/0174.webp",
+    "https://AccKaspa.github.io/img/0175.webp", "https://AccKaspa.github.io/img/0176.webp",
+    "https://AccKaspa.github.io/img/0177.webp", "https://AccKaspa.github.io/img/0178.webp",
+    "https://AccKaspa.github.io/img/0179.webp", "https://AccKaspa.github.io/img/0180.webp",
+    "https://AccKaspa.github.io/img/0181.webp", "https://AccKaspa.github.io/img/0182.webp",
+    "https://AccKaspa.github.io/img/0183.webp", "https://AccKaspa.github.io/img/0184.webp",
+    "https://AccKaspa.github.io/img/0185.webp", "https://AccKaspa.github.io/img/0186.webp",
+    "https://AccKaspa.github.io/img/0187.webp", "https://AccKaspa.github.io/img/0188.webp",
+    "https://AccKaspa.github.io/img/0190.webp", "https://AccKaspa.github.io/img/0191.webp",
+    "https://AccKaspa.github.io/img/0192.webp", "https://AccKaspa.github.io/img/0193.webp",
+    "https://AccKaspa.github.io/img/0194.webp", "https://AccKaspa.github.io/img/0195.webp",
+    "https://AccKaspa.github.io/img/0196.webp", "https://AccKaspa.github.io/img/0197.webp",
+    "https://AccKaspa.github.io/img/0198.webp", "https://AccKaspa.github.io/img/0199.webp",
+    "https://AccKaspa.github.io/img/0201.webp", "https://AccKaspa.github.io/img/0202.webp",
+    "https://AccKaspa.github.io/img/0203.webp", "https://AccKaspa.github.io/img/0205.webp"
+];
+
+const gifPool = [
+    "https://AccKaspa.github.io/gif/0001.gif", "https://AccKaspa.github.io/gif/0002.gif",
+    "https://AccKaspa.github.io/gif/0003.gif", "https://AccKaspa.github.io/gif/0004.gif",
+    "https://AccKaspa.github.io/gif/0005.gif", "https://AccKaspa.github.io/gif/0006.gif",
+    "https://AccKaspa.github.io/gif/0007.gif", "https://AccKaspa.github.io/gif/0008.gif",
+    "https://AccKaspa.github.io/gif/0009.gif", "https://AccKaspa.github.io/gif/0010.gif",
+    "https://AccKaspa.github.io/gif/0011.gif", "https://AccKaspa.github.io/gif/0012.gif",
+    "https://AccKaspa.github.io/gif/0013.gif", "https://AccKaspa.github.io/gif/0014.gif",
+    "https://AccKaspa.github.io/gif/0015.gif", "https://AccKaspa.github.io/gif/0016.gif",
+    "https://AccKaspa.github.io/gif/0017.gif", "https://AccKaspa.github.io/gif/0018.gif",
+    "https://AccKaspa.github.io/gif/0019.gif", "https://AccKaspa.github.io/gif/0020.gif",
+    "https://AccKaspa.github.io/gif/0021.gif", "https://AccKaspa.github.io/gif/0022.gif",
+    "https://AccKaspa.github.io/gif/0023.gif", "https://AccKaspa.github.io/gif/0024.gif",
+    "https://AccKaspa.github.io/gif/0025.gif", "https://AccKaspa.github.io/gif/0026.gif",
+    "https://AccKaspa.github.io/gif/0027.gif", "https://AccKaspa.github.io/gif/0028.gif",
+    "https://AccKaspa.github.io/gif/0029.gif", "https://AccKaspa.github.io/gif/0030.gif",
+    "https://AccKaspa.github.io/gif/0031.gif", "https://AccKaspa.github.io/gif/0032.gif",
+    "https://AccKaspa.github.io/gif/0033.gif", "https://AccKaspa.github.io/gif/0034.gif",
+    "https://AccKaspa.github.io/gif/0035.gif", "https://AccKaspa.github.io/gif/0036.gif",
+    "https://AccKaspa.github.io/gif/0037.gif", "https://AccKaspa.github.io/gif/0038.gif",
+    "https://AccKaspa.github.io/gif/0039.gif", "https://AccKaspa.github.io/gif/0040.gif",
+    "https://AccKaspa.github.io/gif/0041.gif", "https://AccKaspa.github.io/gif/0042.gif",
+    "https://AccKaspa.github.io/gif/0043.gif", "https://AccKaspa.github.io/gif/0044.gif",
+    "https://AccKaspa.github.io/gif/0045.gif", "https://AccKaspa.github.io/gif/0046.gif",
+    "https://AccKaspa.github.io/gif/0047.gif", "https://AccKaspa.github.io/gif/0048.gif",
+    "https://AccKaspa.github.io/gif/0049.gif", "https://AccKaspa.github.io/gif/0050.gif",
+    "https://AccKaspa.github.io/gif/0051.gif", "https://AccKaspa.github.io/gif/0052.gif",
+    "https://AccKaspa.github.io/gif/0053.gif", "https://AccKaspa.github.io/gif/0054.gif",
+    "https://AccKaspa.github.io/gif/0055.gif", "https://AccKaspa.github.io/gif/0056.gif",
+    "https://AccKaspa.github.io/gif/0057.gif", "https://AccKaspa.github.io/gif/0058.gif",
+    "https://AccKaspa.github.io/gif/0059.gif", "https://AccKaspa.github.io/gif/0060.gif",
+    "https://AccKaspa.github.io/gif/0061.gif", "https://AccKaspa.github.io/gif/0062.gif",
+    "https://AccKaspa.github.io/gif/0063.gif", "https://AccKaspa.github.io/gif/0064.gif",
+    "https://AccKaspa.github.io/gif/0065.gif", "https://AccKaspa.github.io/gif/0066.gif",
+    "https://AccKaspa.github.io/gif/0067.gif", "https://AccKaspa.github.io/gif/0068.gif",
+    "https://AccKaspa.github.io/gif/0069.gif", "https://AccKaspa.github.io/gif/0070.gif",
+    "https://AccKaspa.github.io/gif/0071.gif", "https://AccKaspa.github.io/gif/0072.gif",
+    "https://AccKaspa.github.io/gif/0073.gif", "https://AccKaspa.github.io/gif/0074.gif",
+    "https://AccKaspa.github.io/gif/0075.gif", "https://AccKaspa.github.io/gif/0076.gif",
+    "https://AccKaspa.github.io/gif/0077.gif", "https://AccKaspa.github.io/gif/0078.gif",
+    "https://AccKaspa.github.io/gif/0079.gif", "https://AccKaspa.github.io/gif/0080.gif",
+    "https://AccKaspa.github.io/gif/0081.gif", "https://AccKaspa.github.io/gif/0082.gif",
+    "https://AccKaspa.github.io/gif/0083.gif", "https://AccKaspa.github.io/gif/0084.gif",
+    "https://AccKaspa.github.io/gif/0085.gif", "https://AccKaspa.github.io/gif/0086.gif",
+    "https://AccKaspa.github.io/gif/0087.gif", "https://AccKaspa.github.io/gif/0088.gif",
+    "https://AccKaspa.github.io/gif/0089.gif", "https://AccKaspa.github.io/gif/0090.gif",
+    "https://AccKaspa.github.io/gif/0091.gif", "https://AccKaspa.github.io/gif/0092.gif",
+    "https://AccKaspa.github.io/gif/0093.gif", "https://AccKaspa.github.io/gif/0094.gif",
+    "https://AccKaspa.github.io/gif/0095.gif", "https://AccKaspa.github.io/gif/0096.gif",
+    "https://AccKaspa.github.io/gif/0097.gif", "https://AccKaspa.github.io/gif/0098.gif",
+    "https://AccKaspa.github.io/gif/0099.gif", "https://AccKaspa.github.io/gif/0100.gif",
+    "https://AccKaspa.github.io/gif/0111.gif", "https://AccKaspa.github.io/gif/0112.gif",
+    "https://AccKaspa.github.io/gif/0113.gif", "https://AccKaspa.github.io/gif/0114.gif",
+    "https://AccKaspa.github.io/gif/0115.gif", "https://AccKaspa.github.io/gif/0116.gif",
+    "https://AccKaspa.github.io/gif/0117.gif", "https://AccKaspa.github.io/gif/0118.gif",
+    "https://AccKaspa.github.io/gif/0119.gif", "https://AccKaspa.github.io/gif/0120.gif",
+    "https://AccKaspa.github.io/gif/0121.gif", "https://AccKaspa.github.io/gif/0122.gif",
+    "https://AccKaspa.github.io/gif/0123.gif", "https://AccKaspa.github.io/gif/0124.gif",
+    "https://AccKaspa.github.io/gif/0125.gif", "https://AccKaspa.github.io/gif/0126.gif",
+    "https://AccKaspa.github.io/gif/0127.gif", "https://AccKaspa.github.io/gif/0128.gif",
+    "https://AccKaspa.github.io/gif/0129.gif", "https://AccKaspa.github.io/gif/0130.gif",
+    "https://AccKaspa.github.io/gif/0131.gif", "https://AccKaspa.github.io/gif/0132.gif",
+    "https://AccKaspa.github.io/gif/0133.gif", "https://AccKaspa.github.io/gif/0134.gif",
+    "https://AccKaspa.github.io/gif/0135.gif", "https://AccKaspa.github.io/gif/0136.gif",
+    "https://AccKaspa.github.io/gif/0137.gif", "https://AccKaspa.github.io/gif/0138.gif",
+    "https://AccKaspa.github.io/gif/0139.gif", "https://AccKaspa.github.io/gif/0140.gif",
+    "https://AccKaspa.github.io/gif/0141.gif", "https://AccKaspa.github.io/gif/0142.gif",
+    "https://AccKaspa.github.io/gif/0143.gif", "https://AccKaspa.github.io/gif/0144.gif",
+    "https://AccKaspa.github.io/gif/0145.gif", "https://AccKaspa.github.io/gif/0146.gif",
+    "https://AccKaspa.github.io/gif/0147.gif", "https://AccKaspa.github.io/gif/0148.gif",
+    "https://AccKaspa.github.io/gif/0149.gif", "https://AccKaspa.github.io/gif/0150.gif",
+    "https://AccKaspa.github.io/gif/0151.gif", "https://AccKaspa.github.io/gif/0152.gif",
+    "https://AccKaspa.github.io/gif/0153.gif", "https://AccKaspa.github.io/gif/0154.gif",
+    "https://AccKaspa.github.io/gif/0155.gif", "https://AccKaspa.github.io/gif/0156.gif",
+    "https://AccKaspa.github.io/gif/0157.gif", "https://AccKaspa.github.io/gif/0158.gif",
+    "https://AccKaspa.github.io/gif/0159.gif", "https://AccKaspa.github.io/gif/0160.gif",
+    "https://AccKaspa.github.io/gif/0161.gif", "https://AccKaspa.github.io/gif/0162.gif",
+    "https://AccKaspa.github.io/gif/0163.gif", "https://AccKaspa.github.io/gif/0164.gif"
+];
+function loadRandomImagesAndGif() {
+    const backgroundImages = document.getElementById('backgroundImages');
+    const gifOverlay = document.getElementById('gifOverlay');
+
+    // Clear previous content
+    backgroundImages.innerHTML = '';
+    gifOverlay.innerHTML = '';
+
+    // Load background images
+    const randomImages = imagePool.sort(() => 0.5 - Math.random()).slice(0, 25);
+    randomImages.forEach(imagePath => {
+        const img = new Image();
+        img.src = imagePath;
+        img.alt = 'Random Background Image';
+        img.style.display = 'block';
+        backgroundImages.appendChild(img);
+    });
+
+    // Adjustable vertical spread factor
+    const verticalSpread = 30000; // Adjust as needed
+    const horizontalSpread = 800; // Adjust as needed
+
+
+    // Load unique GIFs
+    const uniqueGif = gifPool.sort(() => 0.5 - Math.random()).slice(0, 164);
+    uniqueGif.forEach(gifPath => {
+        const gifImg = new Image();
+        gifImg.src = gifPath;
+        gifImg.alt = 'Random GIF';
+
+        // Random position within the container
+        const containerWidth = document.querySelector('.canvas-container').offsetWidth;
+        const randomX = Math.random() * (containerWidth - 350);
+        const randomY = Math.random() * verticalSpread;
+
+        gifImg.style.position = 'absolute';
+        gifImg.style.left = `${randomX}px`;
+        gifImg.style.top = `${randomY}px`;
+
+        gifOverlay.appendChild(gifImg);
+    });
+}
+
+// Initialize on load
+window.onload = loadRandomImagesAndGif;
+
+// Reload on resize
+window.onresize = loadRandomImagesAndGif;
 </script>
 </body>
 </html>
+
