@@ -349,7 +349,7 @@
         const gifOverlay = document.getElementById('gifOverlay');
         canvasContainer.innerHTML = '';
         gifOverlay.innerHTML = '';
-        const randomImages = imagePool.sort(() => 0.5 - Math.random()).slice(0, 4);
+        const randomImages = imagePool.sort(() => 0.5 - Math.random()).slice(0, 25);
         randomImages.forEach(imagePath => {
             const img = new Image();
             img.src = imagePath;
