@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>█ █ █ $FAST | RWA █ █ █</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'DejaVu Sans', sans-serif;
+            background-color: #000;
+            color: #00ffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            min-height: 100vh;
+            overflow-y: auto;
+            font-size: 20px;
+        }
+        .canvas-container {
+            width: 95vw;
+            max-width: 1200px;
+            margin: 20px auto;
+            position: relative;
+        }
+        .canvas-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .gif-overlay img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            position: absolute;
+            z-index: 15;
+        }
+        header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 20px;
+        }
+        .banner-container {
+            margin-bottom: 30px;
+        }
+        .header-text {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+        .header-text a {
+            color: white;
+            font-size: 36px;
+            text-decoration: underline;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .header-text a:hover {
+            text-decoration: underline;
+        }
+        .brute-center {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            flex-direction: column;
+        }
+        .header-text p {
+            line-height: 1;
+            word-wrap: break-word;
+            white-space: pre-line;
+            text-align: justify;
+            padding: 10px 20px;
+            margin: 0;
+        }
+        p {
+           margin-bottom: 20px; 
+           line-height: 1;    
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .social-links img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .social-links img:hover {
+            transform: scale(1.2);
+        }
+        .table-container {
+            display: table;
+            width: 80%;
+            border-collapse: collapse;
+            border-spacing: 0 15px;
+        }
+
+        .table-row {
+            display: table-row;
+            border-top: 1px dashed #00ffff;
+        }
+
+        .table-cell {
+            display: table-cell;
+            vertical-align: top;
+            padding: 10px;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: auto;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .info {
+            padding-left: 10px;
+        }
+
+        .banner {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 5px solid white;
+            border-radius: 5px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        .centered-paragraph {
+            text-align: center;
+            max-width: 65%;
+            margin: 20px auto; /* Centers the div horizontally */
+            border: 1px dashed #00ffff; /* Updated border color as per your example */
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .footer {
+            /* position: fixed; */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .fixed-logo {
+            position: fixed;
+            top: 50%; /* Center vertically */
+            right: 20px; /* Distance from the right */
+            transform: translateY(-50%); /* Adjust for vertical centering */
+            z-index: 100; /* Ensure it stays above other elements */
+        }
+
+        .fixed-logo img {
+            width: 80px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-text">
+        <h3>Tokenized Art on FAST</h3>
+    </div>
+
+    <div class="centered-paragraph">
+        <p>Art-Backed RWA Ecosystem: The FAST DAO has begun acquiring both NFTs
+        and physical fine art in order to become a real-world asset (RWA)
+        token.</p>
+        <p>The works in the DAO's collection will serve as marketing tools for
+        the token, showcased through physical exhibitions around the world as
+        well as online.</p>
+        <p>Tokenization is a process that allows real-world assets (RWA) to be
+        converted into digital tokens. FAST is leading the way in providing a
+        secure and efficient solution for tokenizing RWAs as this industry
+        continues to grow. Art is just one of these assets that can be
+        tokenized. By tokenizing art, investors can own a fraction of the
+        artwork without having to purchase the entire piece. This allows for
+        greater access to valuable artworks and democratizes the art market.</p>
+        <p>Please contact through X.com us if you are interested in selling a
+        work to the dao in exchange for $FAST.
+        </p>
+    </div>
+    </header>
+
+    <body>
+        <div class="table-container">
+            <!-- Example Row -->
+            <div class="table-row">
+                <div class="table-cell">
+                    <img class="thumbnail" src="site-assets/rwa/hoeckleman_2.jpg" alt="Antonius Hoeckelmann Head I" onclick="openModal(this.src)">
+                </div>
+                <div class="table-cell info">
+                    <h3>Antonius Hoeckelmann</h3>
+                    <h4>Head I</h4>
+                    <h5>Enamel and Pencil on Paper</h5>
+                    <h5>70cm x 190cm</h5>
+                    <h5>1991</h5>
+                    <h5><a href="https://www.moma.org/artists/2677" 
+                        target="_blank" style="color: #00ffff; text-decoration: underline;">https://www.moma.org/artists/2677</a></h5>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="table-cell">
+                    <img class="thumbnail" src="site-assets/rwa/hoeckleman_1.jpg" alt="Antonius Hoeckelmann The Sitter" onclick="openModal(this.src)">
+                </div>
+                <div class="table-cell info">
+                    <h3>Antonius Hoeckelmann</h3>
+                    <h4>The Sitter</h4>
+                    <h5>Acrylic, ink and Pencil on Paper</h5>
+                    <h5>150cm x150cm</h5>
+                    <h5>1990</h5>
+                    <h5><a href="https://www.moma.org/artists/2677" 
+                        target="_blank" style="color: #00ffff; text-decoration: underline;">https://www.moma.org/artists/2677</a></h5>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="table-cell">
+                    <img class="thumbnail" src="site-assets/rwa/madere.jpg" alt="Jared Madere Untitled" onclick="openModal(this.src)">
+                </div>
+                <div class="table-cell info">
+                    <h3>Jared Madere</h3>
+                    <h4>Untitled</h4>
+                    <h5>UV print on Vinyl Banner</h5>
+                    <h5>170cm x 170cm</h5>
+                    <h5>2020</h5>
+                    <h5><a href="https://whitney.org/exhibitions/jared-madere" 
+                        target="_blank" style="color: #00ffff; text-decoration: underline;">https://whitney.org/exhibitions/jared-madere</a></h5>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="table-cell">
+                    <img class="thumbnail" src="site-assets/rwa/brus.jpg" alt="Gunter Brus Schoeppen" onclick="openModal(this.src)">
+                </div>
+                <div class="table-cell info">
+                    <h3>Gunter Brus</h3>
+                    <h4>Schoeppen</h4>
+                    <h5>Pen on Beer Slip</h5>
+                    <h5>6cm x 13cm</h5>
+                    <h5>1975</h5>
+                    <h5><a href="https://www.tate.org.uk/art/artists/gunter-brus-827" 
+                        target="_blank" style="color: #00ffff; text-decoration: underline;">https://www.tate.org.uk/art/artists/gunter-brus-827</a></h5>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <img class="thumbnail" src="site-assets/rwa/kippenberger_1.jpg" alt="Gerd Kippenberger
+
+                    The Flutist" onclick="openModal(this.src)">
+                </div>
+                <div class="table-cell info">
+                    <h3>Gerd Kippenberger</h3>
+                    <h4>The Flutist</h4>
+                    <h5>Oil on panel</h5>
+                    <h5>40cm x 60cm</h5>
+                    <h5>1985</h5>
+                    <h5><a href="https://www.museoreinasofia.es/en/collection/artwork/gerdmartin-kippenberger-sand-der-vaseline-ccd-galerie-dusseldorf-august-1986" 
+                        target="_blank" style="color: #00ffff; text-decoration: underline;">https://www.museoreinasofia.es/en/collection/artwork/gerdmartin-kippenberger-sand-der-vaseline-ccd-galerie-dusseldorf-august-1986</a></h5>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <img class="thumbnail" src="site-assets/rwa/kippenberger_2.jpg" alt="Gerd Kippenberger The Flutist" onclick="openModal(this.src)">
+                </div>
+                <div class="table-cell info">
+                    <h3>Gerd Kippenberger</h3>
+                    <h4>Woman</h4>
+                    <h5>Spray Paint on Board</h5>
+                    <h5>40cm x 60cm</h5>
+                    <h5>1985</h5>
+                    <h5><a href="https://www.museoreinasofia.es/en/collection/artwork/gerdmartin-kippenberger-sand-der-vaseline-ccd-galerie-dusseldorf-august-1986" 
+                        target="_blank" style="color: #00ffff; text-decoration: underline;">https://www.museoreinasofia.es/en/collection/artwork/gerdmartin-kippenberger-sand-der-vaseline-ccd-galerie-dusseldorf-august-1986</a></h5>
+                </div>
+            </div>
+            <div class="table-row"></div>
+        </div>
+        <div class="fixed-logo">
+            <img src="site-assets/rwa/banner.png" alt="Logo" />
+        </div>
+        <footer class="footer">
+            <div class="social-links">
+                <a href="https://x.com/SNAIL_KOIN" target="_blank">
+                    <img src="AccKaspa.github.io/site-assets/x.png" alt="X">
+                </a>
+                <a href="https://discord.gg/3CXbWdqXrP" target="_blank">
+                    <img src="AccKaspa.github.io/site-assets/dis.png" alt="Discord">
+                </a>
+                <a href="http://t.me/snailheads" target="_blank">
+                    <img src="AccKaspa.github.io/site-assets/tg.png" alt="Telegram">
+                </a>
+            </div>
+        </footer>
+
+        <div class="modal" id="imageModal">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Full View">
+        </div>
+
+        <script>
+            function openModal(imageSrc) {
+                const modal = document.getElementById('imageModal');
+                const modalImage = document.getElementById('modalImage');
+                modalImage.src = imageSrc.replace('-thumbnail', ''); // Adjust to full-size image
+                modal.style.display = 'flex';
+            }
+
+            function closeModal() {
+                const modal = document.getElementById('imageModal');
+                modal.style.display = 'none';
+            }
+        </script>
+    </body>
