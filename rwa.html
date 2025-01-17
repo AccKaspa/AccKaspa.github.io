@@ -23,7 +23,7 @@
             font-size: 20px;
         }
         .canvas-container {
-            width: 95vw;
+            width: 85vw;
             max-width: 1200px;
             margin: 20px auto;
             position: relative;
@@ -105,7 +105,10 @@
         }
         .table-container {
             display: table;
-            width: 80%;
+			width: 80vw;
+            max-width: 1200px;
+            margin: 20px auto;
+            position: relative;
             border-collapse: collapse;
             border-spacing: 0 15px;
         }
@@ -119,8 +122,34 @@
             display: table-cell;
             vertical-align: top;
             padding: 10px;
+			max-width: 80%; /* Ensures cells don't overflow */
+    		word-wrap: break-word;
         }
+		@media (max-width: 768px) {
+			.table-container {
+				display: block;
+				width: 100%;
+			}
 
+			.table-row {
+				display: block;
+				margin-bottom: 15px; /* Adds spacing between "rows" */
+				border-top: none;
+			}
+
+			.table-cell {
+				display: block;
+				max-width: 85vw;
+				padding: 10px 0;
+				text-align: left; /* Align content to the left */
+				border-top: 1px dashed #00ffff;
+			}
+
+			.table-cell img {
+				margin: 0 auto 10px; /* Centers the image and adds spacing */
+				display: block;
+			}
+		}
         .thumbnail {
             width: 100px;
             height: auto;
@@ -170,7 +199,7 @@
         }
         .centered-paragraph {
             text-align: center;
-            max-width: 65%;
+            max-width: 75vw;
             margin: 20px auto; /* Centers the div horizontally */
             border: 1px dashed #00ffff; /* Updated border color as per your example */
             padding: 20px;
@@ -225,8 +254,7 @@
         </p>
     </div>
     </header>
-
-    <body>
+	<main>
         <div class="table-container">
             <!-- Example Row -->
             <div class="table-row">
@@ -320,6 +348,7 @@
             </div>
             <div class="table-row"></div>
         </div>
+	</main>
         <div class="fixed-logo">
             <img src="site-assets/rwa/banner.png" alt="Logo" />
         </div>
