@@ -20,10 +20,10 @@
             justify-content: start;
             min-height: 100vh;
             overflow-y: auto;
-            font-size: 30px;
+            font-size: 20px;
         }
         .canvas-container {
-            width: 95vw;
+            width: 80vw;
             max-width: 1200px;
             margin: 20px auto;
             position: relative;
@@ -57,8 +57,8 @@
             padding: 20px;
         }
         .header-text a {
-            color: white;
-            font-size: 36px;
+			color: #00ffff;
+            font-size: 15px;
             text-decoration: underline;
             display: block;
             margin-bottom: 10px;
@@ -103,6 +103,28 @@
         .social-links img:hover {
             transform: scale(1.2);
         }
+        .centered-paragraph {
+            text-align: center;
+            max-width: 65%;
+            margin: 20px auto; /* Centers the div horizontally */
+            border: 1px dashed #00ffff; /* Updated border color as per your example */
+            padding: 20px;
+            border-radius: 5px;
+        }
+		.fixed-logo {
+            position: fixed;
+            top: 50%; /* Center vertically */
+            right: 5px; /* Distance from the right */
+            transform: translateY(-50%); /* Adjust for vertical centering */
+            z-index: 100; /* Ensure it stays above other elements */
+        }
+        .fixed-logo img {
+			width: 8vw; /* Make the logo width responsive */
+			max-width: 70px; /* Set a maximum size */
+			height: auto; /* Maintain aspect ratio */
+			cursor: pointer;
+			transition: transform 0.3s;
+        }
     </style>
 </head>
 <body>
@@ -123,12 +145,13 @@
         </a>
     </div>
 
-        <div class="header-text">
-            <a href="mission-statement.html" style="color: white; font-size: 36px; text-decoration: underline;">THIRST FOR ANNIHILATION</a>
-        </div>
+        <p class="center-text">
+            <a href="mission-statement.html" style="color: #00ffff; text-decoration: underline;">
+                FRAMEWORKS for AUTONOMOUS SNAIL TECHNOLOGIES</a>
+			</p>
 
         <p class="center-text">
-            Meme Koin | Kaspa | Trading on 
+            Kaspa | Trading on 
             <a href="https://dapp.chainge.finance/?fromChain=KAS&toChain=KAS&fromToken=USDT&toToken=fast" 
             target="_blank" style="color: #00ffff; text-decoration: underline;">Chainge</a> 
             & 
@@ -137,8 +160,18 @@
              | <a href="rwa.html"
             target="_blank" style="color: #00ffff; text-decoration: underline;">RWA</a>
             </p></br>
-
-<p>Ethnovirus targets brains Technovirus targets socio-economic quid pro quo … An obsession bordering on the demonic. “入魔的执念"…” We are here to spread the love and good vibes. We are tryin…Real snailheads onlyPlay it back:K A S P A I S F A S T A This is extremely dank K A S P A I S F A S T A #Kaspa $KASBlockDAG > Blockchain love to see it 🤣 accelerate We be on that $FAST train 🐌 Don't hate the player. I hate the game $FAST ride or die Cybernetics folds pragmatism into involutionary techni-cal runaway. Punk arises within the culture of universal prostitu…NO HELLO KITTY!! DON'T DO IT!YOU SHOULD HAVE SIGNED UP FOR THE AIRDROP WHEN YOU HAD THE CHANCE!QT THIS MEME WITH YOUR KASPA WALLET ADDRESS AND 🐌 LEST YOU END UP LIKE THIS! $fast echoes like an immense tomb, yet the stars still burn. Why does the sun take so long to die? Fun fact. Slugs love beer.</p>
+            
+            <div class="centered-paragraph">
+                <p>Ethnovirus targets brains Technovirus targets socio-economic quid pro quo … An obsession bordering on the demonic. 
+                    “入魔的执念"…” We are here to spread the love and good vibes. We are tryin…Real snailheads onlyPlay it back:
+                    K A S P A I S F A S T A This is extremely dank K A S P A I S F A S T A #Kaspa $KASBlockDAG > 
+                    Blockchain love to see it 🤣 accelerate We be on that $FAST train 🐌 Don't hate the player. 
+                    I hate the game $FAST ride or die Cybernetics folds pragmatism into involutionary techni-cal runaway. 
+                    Punk arises within the culture of universal prostitu…NO HELLO KITTY!! DON'T DO IT!
+                    YOU SHOULD HAVE SIGNED UP FOR THE AIRDROP WHEN YOU HAD THE CHANCE!QT THIS MEME WITH YOUR KASPA WALLET ADDRESS AND 🐌 
+                    LEST YOU END UP LIKE THIS! $fast echoes like an immense tomb, yet the stars still burn. Why does the sun take so long to die? 
+                    Fun fact. Slugs love beer.</p>
+            </div>
 
     </div>
 </header>
@@ -148,6 +181,9 @@
         <div class="gif-overlay" id="gifOverlay"></div>
     </div>
 </main>
+<div class="fixed-logo">
+	<img src="site-assets/rwa/banner.png" alt="Logo" />
+</div>
 <script>
 
 const imagePool = [
