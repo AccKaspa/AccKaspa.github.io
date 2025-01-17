@@ -350,7 +350,7 @@
         </div>
 	</main>
         <div class="fixed-logo">
-            <img src="site-assets/rwa/banner.png" alt="Logo" />
+            <img id="logoImage" src="site-assets/rwa/banner.png" alt="Logo" />
         </div>
         <footer class="footer">
             <div class="social-links">
@@ -372,6 +372,13 @@
         </div>
 
         <script>
+			document.getElementById('logoImage').addEventListener('click', function () {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth' // Smooth scrolling effect
+				});
+			});	
+
             function openModal(imageSrc) {
                 const modal = document.getElementById('imageModal');
                 const modalImage = document.getElementById('modalImage');

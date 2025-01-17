@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>█ █ █ █ $FAST  █ █ █ █</title>
+    <title>█ █ █ █ $FAST █ █ █ █</title>
     <style>
         * {
             box-sizing: border-box;
@@ -182,9 +182,16 @@
     </div>
 </main>
 <div class="fixed-logo">
-	<img src="site-assets/rwa/banner.png" alt="Logo" />
+	<img id="logoImage" src="site-assets/rwa/banner.png" alt="Logo" />
 </div>
+
 <script>
+	document.getElementById('logoImage').addEventListener('click', function () {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth' // Smooth scrolling effect
+		});
+	});	
 
 const imagePool = [
     "https://AccKaspa.github.io/img/0001.webp", "https://AccKaspa.github.io/img/0002.webp",
